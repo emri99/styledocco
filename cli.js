@@ -324,7 +324,7 @@ var cli = function(options) {
             project: { name: options.name, menu: menu },
             resources: {
               docs: { js: processJS(docsScript), css: processCSS(resources.docs.css) },
-              previews: { js: processJS(resources.previews.js), css: processCSS(urlsRelative(file.css + resources.previews.css, relativePath)) }
+              previews: { js: processJS(resources.previews.js), css: processCSS(urlsRelative(options.isolate ? (file.css + resources.previews.css) : (pluck(files, 'css').join('') + resources.previews.css), relativePath)) }
             }
           })
         };
