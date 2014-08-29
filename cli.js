@@ -296,9 +296,6 @@ var cli = function(options) {
       });
     }, function(err, files) {
       if (err != null) throw err;
-      // Get the combined CSS from all files.
-      var previewStyles = pluck(files, 'css').join('');
-      previewStyles += resources.previews.css;
       // Build a JSON string of all files and their headings, for client side search.
       var searchIndex = flatten(files.map(function(file) {
         var arr = [ { title: baseFilename(file.path),
@@ -316,9 +313,9 @@ var cli = function(options) {
       var docsScript = '(function(){' + searchIndex + resources.docs.js + '})();';
       // Render files
       var htmlFiles = files.map(function(file) {
-      var relativePath = file.path.split('/');
-      relativePath.pop();
-      relativePath = dirUp(options.out.split('/').length) + relativePath.join('/');
+        var relativePath = file.path.split('/');
+        relativePath.pop();
+        relativePath = dirUp(options.out.split('/').length) + relativePath.join('/');
         return {
           path: file.path,
           html: resources.template({
@@ -327,7 +324,7 @@ var cli = function(options) {
             project: { name: options.name, menu: menu },
             resources: {
               docs: { js: processJS(docsScript), css: processCSS(resources.docs.css) },
-              previews: { js: processJS(resources.previews.js), css: processCSS(urlsRelative(previewStyles, relativePath)) }
+              previews: { js: processJS(resources.previews.js), css: processCSS(urlsRelative(file.css + resources.previews.css, relativePath)) }
             }
           })
         };
