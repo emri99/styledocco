@@ -39,6 +39,7 @@ var options = optimist
   .describe('include', 'Extra CSS/JavaScript to include in previews')
   .describe('minify', 'Minify CSS/JavaScript')['default']('minify', true)
   .describe('isolate', 'Isolate CSS snippets in previews')
+  .describe('exclude', 'Exclude files or folders from processing')['default']('exclude', '')
   .describe('verbose', 'Print status messages to stdout')
   .describe('version', 'Display StyleDocco version')
   .argv;

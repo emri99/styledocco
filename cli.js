@@ -241,7 +241,11 @@ var cli = function(options) {
         });
       }, function(err, files) {
         if (err != null) return cb(err);
+        var excludePattern;
+        if (options.exclude) { excludePattern = new RegExp(options.exclude); }
         files = files.filter(function(file) {
+          // No user-excluded files.
+          if (excludePattern && excludePattern.test(file)) return false;
           // No hidden files
           if (file.match(/(\/|^)\.[^\.\/]/)) return false;
           // Only supported file types
