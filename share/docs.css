@@ -16,7 +16,7 @@ Main layout
 */
 body {
   /* Top/bottom paddings for bars */
-  padding: 60px 0 40px;
+  padding: 100px 0 40px;
   background-color: hsl(207, 10%, 90%);
   color: hsl(207, 5%, 30%);
 }
