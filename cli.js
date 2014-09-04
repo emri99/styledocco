@@ -192,7 +192,7 @@ var cli = function(options) {
   mkdirp(options.out);
 
   // Fetch all static resources.
-  async.parallel({
+  async.parallelLimit({
     template: function(cb) {
       fs.readFile(resourcesDir + 'docs.jade', 'utf8', function(err, contents) {
         if (err != null) return cb(err);
@@ -200,18 +200,18 @@ var cli = function(options) {
       });
     },
     docs: function(cb) {
-      async.parallel({
+      async.parallelLimit({
         css: async.apply(fs.readFile, resourcesDir + 'docs.css', 'utf8'),
         js: function(cb) {
-          async.parallel([
+          async.parallelLimit([
             async.apply(fs.readFile, resourcesDir + 'docs.ui.js', 'utf8'),
             async.apply(fs.readFile, resourcesDir + 'docs.previews.js', 'utf8')
-          ], function(err, res) {
+          ], 1, function(err, res) {
             if (err != null) return cb(err);
             cb(null, res.join(''));
           });
         }
-      }, cb);
+      }, 1, cb);
     },
     // Extra JavaScript and CSS files to include in previews.
     previews: function(cb) {
@@ -272,7 +272,7 @@ var cli = function(options) {
         });
       };
     }
-  }, function(err, resources) {
+  }, 1, function(err, resources) {
     if (err != null) {
       if (err.message.indexOf(errorMessages.noFiles) > -1) {
         console.error(err);
@@ -283,8 +283,8 @@ var cli = function(options) {
     }
     var menu = menuLinks(resources.files, options.basePath);
     // Run files through preprocessor and StyleDocco parser.
-    async.map(resources.files, function(file, cb) {
-      async.parallel({
+    async.mapLimit(resources.files, 1, function(file, cb) {
+      async.parallelLimit({
         css: async.apply(preprocess, file,
                options.preprocessor || fileTypes[path.extname(file)], options),
         docs: function(cb) {
@@ -293,7 +293,7 @@ var cli = function(options) {
             cb(null, styledocco(code));
           });
         }
-      }, function(err, data) {
+      }, 1, function(err, data) {
         if (err != null) return cb(err);
         data.path = file;
         cb(null, data);
