@@ -1,3 +1,8 @@
+This is a fork of the [original StyleDocco](https://github.com/jacobrask/styledocco), with some additional features (for [Lucid Software](https://www.golucid.co/)):
+
+* Ability to exclude files/folders using `--exclude <RegExp as string>` (optional)
+* Ability to isolate relevant CSS in the previews (rather than lumping all compiled CSS together for all the previews) with the optional `--isolate`
+
 StyleDocco
 ==========
 

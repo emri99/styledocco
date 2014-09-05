@@ -1,15 +1,36 @@
 {
-  "name": "styledocco",
+  "name": "lucid-styledocco",
   "description": "Generate documentation and style guides with design patterns from stylesheets.",
-  "keywords": [ "styleguide", "css", "documentation", "design", "patterns" ],
-  "author": "Jacob Rask <jacob@jacobrask.net>",
-  "contributors": ["David Marrs <david@marrsbytes.com>"],
+  "keywords": [
+    "styleguide",
+    "css",
+    "documentation",
+    "design",
+    "patterns"
+  ],
+  "author": "Matt Swensen <mjs@lucidchart.com>",
+  "contributors": [
+    "Jacob Rask <jacob@jacobrask.net>",
+    "David Marrs <david@marrsbytes.com>"
+  ],
   "version": "0.6.6",
   "homepage": "http://jacobrask.github.com/styledocco/",
-  "licenses": [ { "type": "MIT", "url": "http://github.com/jacobrask/styledocco/raw/master/LICENSE" } ],
-  "bugs": { "url": "https://github.com/jacobrask/styledocco/issues" },
-  "repository": { "type": "git", "url": "git://github.com/jacobrask/styledocco.git" },
-  "engines": { "node": ">=0.4.0" },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/mjswensen/styledocco/raw/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/mjswensen/styledocco/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mjswensen/styledocco.git"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
   "preferGlobal": true,
   "dependencies": {
     "async": "0.9.x",
@@ -19,7 +40,8 @@
     "marked": "0.2.x",
     "mkdirp": "0.x.x",
     "optimist": "0.x.x",
-    "uglify-js": "1.2.x" },
+    "uglify-js": "1.2.x"
+  },
   "devDependencies": {
     "browserify": "1.13.x",
     "jshint": "0.7.x",
@@ -28,8 +50,15 @@
     "mocha": "latest"
   },
   "main": "./styledocco",
-  "bin": "./bin/styledocco",
+  "bin": {
+    "styledocco": "./bin/styledocco"
+  },
   "scripts": {
     "test": "nodeunit test; mocha test"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "license": "ISC"
 }
