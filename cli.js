@@ -246,6 +246,8 @@ var cli = function(options) {
         files = files.filter(function(file) {
           // No user-excluded files.
           if (excludePattern && excludePattern.test(file)) return false;
+          // Only user-specified file types.
+          if (options.only && path.extname(file) != options.only) return false;
           // No hidden files
           if (file.match(/(\/|^)\.[^\.\/]/)) return false;
           // Only supported file types
