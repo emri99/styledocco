@@ -43,6 +43,7 @@ var options = optimist
   .describe('only', 'Include only files of given type (e.g., ".less" or ".css")')['default']('only', '')
   .describe('verbose', 'Print status messages to stdout')
   .describe('version', 'Display StyleDocco version')
+  .describe('theme', 'Sets the route folder for you style')
   .argv;
 
 options['in'] = options._.length ? options._ : ['./'];
