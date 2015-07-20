@@ -1,2 +1,9 @@
 node_modules/
 test-browser/tests.js
+
+# eclipse IDE
+.project
+.settings
+
+# OS File
+.DS_Store

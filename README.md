@@ -1,14 +1,11 @@
-This is a fork of the [original StyleDocco](https://github.com/jacobrask/styledocco), with some additional features (for [Lucid Software](https://www.golucid.co/)):
-
-* Ability to exclude files/folders using `--exclude <RegExp as string>` (optional)
-* Ability to isolate relevant CSS in the previews (rather than lumping all compiled CSS together for all the previews) with the optional `--isolate`
+This is a fork of the [original StyleDocco](https://github.com/jacobrask/styledocco), with some additional features grabbed from github forks.
 
 StyleDocco
 ==========
 
 StyleDocco generates documentation and style guide documents from your stylesheets.
 
-Stylesheet comments will be parsed through [Markdown](http://en.wikipedia.org/wiki/Markdown) and displayed in a generated HTML document. You can write HTML code prefixed with 4 spaces or between [code fences](http://github.github.com/github-flavored-markdown/) (<code>```</code>) in your comments, and StyleDocco show a preview with the styles applied, and displays the example HTML code. 
+Stylesheet comments will be parsed through [Markdown](http://en.wikipedia.org/wiki/Markdown) and displayed in a generated HTML document. You can write HTML code prefixed with 4 spaces or between [code fences](http://github.github.com/github-flavored-markdown/) (<code>```</code>) in your comments, and StyleDocco show a preview with the styles applied, and displays the example HTML code.
 
 The previews are rendered in a resizable iframes to make it easy to demonstrate responsive designs at different viewport sizes.
 
@@ -35,9 +32,12 @@ Options
  * `--out`, `-o`       Output directory *(default: "docs")*
  * `--preprocessor`    Custom preprocessor command. *(optional)* (ex: `--preprocessor "~/bin/lessc"`)
  * `--include`         Include specified CSS and/or JavaScript files in the previews. *(optional)* (ex: `--include mysite.css --include app.js`)
+ * `--exclude`         Exclude specified CSS and/or JavaScript files/folders in the previews. *(optional)* (ex: `--exclude <RegExp as string>`)
  * `--verbose`         Show log messages when generating the documentation. *(default: false)*
- * `--theme`           Specify a theme to use [Twitter Bootsrap Theme](https://github.com/konitter/styledocco-bootstrap-theme)
+ * `--isolate`         Isolate relevant CSS in the previews (rather than lumping all compiled CSS together for all the previews). *(default: false)*
+ * `--theme`           Specify a theme to use / preinstalled availables themes: [styledocco, white, bootstrap]
  *                     Stylesheet (or directory of stylesheets) to process.
+ * `--only`            Only include files from supplied extension. One of `.css`, `.scss`, `.sass`, `.less`, `.styl`
 
 Usage examples
 --------------
@@ -50,9 +50,9 @@ Generate documentation for *My Project* in the `mydocs` folder, from source file
 
 `styledocco -n "My Project" -o mydocs -s mydocs --preprocessor "scss --compass" styles`
 
-Generate documentation for *My Project* in the `mydocs` folder, from source files in the `styles` folder. Use the Twitter Bootstap theme
+Generate documentation for *My Project* in the `mydocs` folder, from source files in the `styles` folder. Use the styledocco like white theme
 
-`styledocco -n "My Project" -o mydocs -s mydocs --theme=/styledocco-bootstrap-theme/share/`
+`styledocco -n "My Project" -o mydocs -s mydocs --theme=white
 
 Syntax
 ------
@@ -84,6 +84,21 @@ Tips and tricks
 
 Change Log
 ==========
+
+v0.6.68 - Jul 20, 2015
+----------------------
+
+ * Option theme reviewed:
+   * 3 themes pre-installed:
+     * styledocco (the original one)
+     * bootstrap theme from [Twitter Bootsrap Theme](https://github.com/konitter/styledocco-bootstrap-theme)
+     * white (the original one but lighter)
+ * Add README options `--exclude`, `--isolate`
+ * Add option `--exclude <RegExp as string>` (optional) to exclude files/folders from generated documentation
+ * Add option `--isolate` to isolate relevant CSS in the previews (rather than lumping all compiled CSS together for all the previews)
+ * Add option `--only` to only use some file extension
+
+
 
 v0.6.67- Jan 20, 2015
 ---------------------

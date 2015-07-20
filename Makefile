@@ -14,11 +14,11 @@ test-browser/tests.js: test/
 
 examples:
 	@./bin/styledocco -n StyleDocco -o ./examples/styledocco \
-		--include share/previews.css --include share/docs.ui.js share/docs.css
+		--include share/previews.css --include themes/styledocco/docs.ui.js themes/styledocco/docs.css
 	@./bin/styledocco -n "Twitter Bootstrap" -o ./examples/bootstrap/docs \
 		examples/bootstrap/less
 
 lint:
-	@./node_modules/.bin/jshint styledocco.js cli.js share/ bin/
+	@./node_modules/.bin/jshint styledocco.js cli.js themes/ bin/
 
 .PHONY: all test test-browser pages examples lint

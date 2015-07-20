@@ -162,9 +162,9 @@ var preprocess = function(file, pp, options, cb) {
 
 
 var cli = function(options) {
-  
+
   var errorMessages = { noFiles: 'No css files found' };
-  var resourcesDir = (options.theme == null) ? __dirname + '/share/' : options.theme;
+  var resourcesDir = __dirname + '/themes/'+(options.theme || 'styledocco')+'/';
 
   // Filetypes and matching preprocessor binaries.
   var fileTypes = {
