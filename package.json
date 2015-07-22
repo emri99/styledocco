@@ -36,6 +36,7 @@
   "dependencies": {
     "async": "0.9.x",
     "clean-css": "0.4.x",
+    "cross-spawn": "^0.4.1",
     "findit": "~1.1.0",
     "jade": "0.23.x",
     "marked": "0.2.x",
