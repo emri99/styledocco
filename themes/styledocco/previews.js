@@ -50,7 +50,7 @@ setTimeout(applyPseudoStyles, 1);
 // ========
 // Get bottom-most point in document with an element.
 // `offsetHeight`/`scrollHeight` will not work with absolute or fixed elements.
-var getContentHeight = (function() {
+var getContentHeight = (function(iframeHeightGutter) {
   var bodyStyle = window.getComputedStyle(bodyEl, null);
   return function() {
     if (bodyEl.childElementCount === 0) return bodyEl.offsetHeight;
@@ -64,7 +64,7 @@ var getContentHeight = (function() {
     height += parseInt(bodyStyle.getPropertyValue('padding-bottom'), 10);
     return Math.max(height, bodyEl.offsetHeight);
   };
-})();
+})(40);
 
 var callbacks = {
   getHeight: function() {
